@@ -11,19 +11,15 @@
   </body>
 
   <script>
-    const result = document.querySelector('#result');
+    const result = document.getElementById('result');
   </script>
 
   <script>
-    // 🦁 créer une fonction pour calculé l'air d'un triangle
-    // 💡 const triangleAir = (base, height) => {...}
-
-    // 🦁 Pour calculer l'air d'un triangle il faut faire
-    // base * hauteur / 2
-
     const calculate = () => {
-      // 🦁 calcule l'air d'un triangle de 5 de base et 10 de hauter
-      // 🦁 ajoute ce résultat dans la div result.
+      const base = 5;
+      const height = 10;
+      const area = triangleAir(base, height);
+      result.innerHTML = area;
     };
   </script>
 </html>
