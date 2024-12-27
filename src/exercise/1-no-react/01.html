@@ -10,12 +10,20 @@
   </body>
 
   <script>
-    // 🦁 crée une div
+    const root = document.getElementById('root');
 
-    // 🦁 ajoute le text "Hello 👋" dedans
+    function Counter() {
+      const [count, setCount] = React.useState(0);
+      return (
+        <div>
+          <button onClick={() => setCount(count + 1)}>
+            Compteur : {count}
+          </button>
+        </div>
+      );
+    }
 
-    // 🦁 récupère l'élément "root"
-
-    // 🦁 ajoute la div dans l'élément "root"
+    ReactDOM.createRoot(root).render(<Counter />);
+  
   </script>
 </html>
