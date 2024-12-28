@@ -4,26 +4,34 @@
     {{> head}}
   </head>
   <body>
-    <!-- 🦁 crée une div avec l'id "root" -->
-    <!-- ℹ️ presque toutes les app React ont une "root".
-         C'est le premier nœud de notre arbre. -->
+    <div id="root"></div>
   </body>
+
+  <style>
+    .counter {
+      padding: 10px;
+      margin: 20px;
+      border: 1px solid black;
+      border-radius: 5px;
+    }
+  </style>
 
   <script>
     const root = document.getElementById('root');
+    const button = document.createElement('button');
+    button.setAttribute('id', 'counter');
+    button.setAttribute('class', 'counter');
+    button.textContent = 'Click me';
 
-    function Counter() {
-      const [count, setCount] = React.useState(0);
-      return (
-        <div>
-          <button onClick={() => setCount(count + 1)}>
-            Compteur : {count}
-          </button>
-        </div>
-      );
-    }
+    let count = 0;
 
-    ReactDOM.createRoot(root).render(<Counter />);
-  
+    const counter = () => {
+      button.textContent = `Clicked ${count} times`;
+      count++;
+    };
+
+    button.addEventListener('click', counter);
+
+    root.appendChild(button);
   </script>
 </html>
