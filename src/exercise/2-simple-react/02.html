@@ -17,14 +17,29 @@
     <div id="root"></div>
   </body>
 
-  <script>
-    // 🦁 Crée un button avec comme id "start" et comme text à l'intérieur "Start !"
-    // 🦁 Ajoute une événement "onClick" à notre button qui affiche une alert.
+  <script src="https://cdn.tailwindcss.com"></script>
 
-    // 🦁 Crée une div : "elements" avec à l'intérieur le bouton.
+  <script>
+    const title = React.createElement('h1', { className: 'text-2xl font-bold' }, 'Lance la partie !');
+
+    const start = React.createElement('button', { id: 'start', className: 'bg-blue-500 text-white px-4 py-2 rounded-md', onClick: () => alert('Le bouton start à été cliqué !') }, 'Start !');
+    const stop = React.createElement('button', { id: 'stop', className: 'bg-red-500 text-white px-4 py-2 rounded-md', onClick: () => alert('Le bouton stop à été cliqué !') }, 'Stop');
+    const buttons = React.createElement('div', { className: 'flex gap-4' }, start, stop);
+
+    const fruits = ['banana', 'apple', 'strawberry'];
+    const fruitsList = fruits.map((fruit, index) => React.createElement('li',  { className: 'list-group list-group-item list-group-item-action', key: index }, fruit));
+    const ul = React.createElement('ul', { className: 'list-group' }, fruitsList);
+
 
     const container = document.querySelector('#root');
-    const root = undefined; // 🦁 Remplace `undefined` by `ReactDOM.createRoot(container);`
+    const root = ReactDOM.createRoot(container);
+    const elements = React.createElement('div', { id: 'elements', className: 'flex flex-col justify-center items-center h-screen gap-4' }, title, buttons, ul);
+
+    root.render(elements);
+
+
+    root.render(elements);
+
     // 🦁 Utilise `root.render` pour afficher la div "elements"
   </script>
 </html>

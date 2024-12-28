@@ -14,24 +14,48 @@
       border: 1px solid black;
       border-radius: 5px;
     }
+
+    .list-group {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-align: left;
+    }
   </style>
 
   <script>
     const root = document.getElementById('root');
-    const button = document.createElement('button');
-    button.setAttribute('id', 'counter');
-    button.setAttribute('class', 'counter');
-    button.textContent = 'Click me';
-
     let count = 0;
 
-    const counter = () => {
-      button.textContent = `Clicked ${count} times`;
-      count++;
+    function Counter(initialValue){
+      const button = document.createElement('button');
+      button.setAttribute('id', 'counter');
+      button.setAttribute('class', 'counter');
+      button.classList.add('btn', 'btn-primary');
+      button.textContent = initialValue ? initialValue : `Clicked ${count} times`;
+      button.addEventListener('click', () => {
+        count++;
+        button.textContent = `Clicked ${count} times`;
+      });
+      return button;
     };
 
-    button.addEventListener('click', counter);
+    root.appendChild(Counter("Hello 👋"));
 
-    root.appendChild(button);
+    const fruits = ['banana', 'apple', 'strawberry'];
+    const ul = document.createElement('ul');
+    ul.classList.add('list-group');
+    fruits.forEach( (fruit, index) => {
+      const li = document.createElement('li');
+      li.textContent =  `${index + 1}. ${fruit.charAt(0).toUpperCase() + fruit.slice(1)}`;
+      li.setAttribute('id', index);
+      ul.appendChild(li);
+    })
+
+    root.appendChild(ul);
   </script>
 </html>
