@@ -18,26 +18,57 @@
     <div id="root"></div>
   </body>
 
-  <!-- 💡 permet de faire comprendre a Babel qu'il doit compiler ce fichier -->
-  <script type="text/babel">
-    // 🦁 Remplace tout ceci par du JSX !
-    // 💡 <button id=...
-    const startButton = React.createElement(
-      'button',
-      {
-        id: 'start',
-        onClick: () => {
-          alert('Le bouton start à été cliqué !');
-        },
-      },
-      'Start'
-    );
+  <style>
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
 
-    // 🦁 Remplace tout ceci par du JSX !
-    // 💡 <div>...
-    const elements = React.createElement('div', null, startButton);
+    .elements {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+  </style>
+
+  <script type="text/babel">
+
+    const StartButton = () => {
+      return (
+        <button id="start" onClick={() => alert('Le bouton start à été cliqué !')}>Start</button>
+      );
+    }
+
+    const Elements = () => {
+      return (
+        <div className="elements">
+          <h2>{Math.random()}</h2>
+          <p>{112 + 4}</p>
+          <span>{new Date().toDateString()}</span>
+          <StartButton />
+        </div>
+      );
+    }
+ 
+
+    const Message = ({ children, author }) => {
+      return <p>{author} : {children}</p>;
+    }
 
     const root = ReactDOM.createRoot(document.querySelector('#root'));
-    root.render(elements);
+    root.render(
+      <div className="container">
+        <Message author="Melvynx">Mon message ici</Message>
+        <Message author="John">Bonjour</Message>
+        <Elements />
+      </div>
+    );
   </script>
+ 
 </html>
+
